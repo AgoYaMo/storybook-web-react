@@ -1,0 +1,10 @@
+:root {
+    --ago-color: green;
+    --ago-font: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --ago-button-font: var(--ago-font);
+    --ago-button-border-size: .15rem;
+    --ago-button-roder-radius: .2rem;
+    --ago-button-color: var(--ago-color);
+    --ago-button-border-inactive-color: gray;
+    --ago-button-border-active-color: var(--ago-color);
+}

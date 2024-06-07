@@ -1,0 +1,52 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when pushing to main
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Node.js Package
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'package.json'
+  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # o la versión que prefieras
+
+      - name: Install jq
+        run: sudo apt-get install jq
+
+      - name: Check for version change
+        id: version_check
+        run: |
+          if git show HEAD:package.json | jq -r .version > /tmp/new_version; then
+            git show HEAD^:package.json | jq -r .version > /tmp/old_version || echo "0.0.0" > /tmp/old_version
+            if [ "$(cat /tmp/new_version)" != "$(cat /tmp/old_version)" ]; then
+              echo "version_changed=true" >> $GITHUB_ENV
+              echo "New version: $(cat /tmp/new_version)"
+              echo "Old version: $(cat /tmp/old_version)"
+            else
+              echo "version_changed=false" >> $GITHUB_ENV
+            fi
+          else
+            echo "Failed to read package.json"
+            exit 1
+          fi
+
+      - name: Publish if version changed
+        if: env.version_changed == 'true'
+        run: echo "Version has changed. Running your custom script..."
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

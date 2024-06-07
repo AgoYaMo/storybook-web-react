@@ -46,8 +46,9 @@ jobs:
 
       - name: Publish if version changed
         if: env.version_changed == 'true'
-      - run: echo "Version has changed. Running your custom script..."
-      - run: npm ci
-      - run: npm publish
+        run: |
+          echo "Version has changed. Running your custom script..."
+          run: npm ci
+          run: npm publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

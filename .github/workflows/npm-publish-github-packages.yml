@@ -45,10 +45,10 @@ jobs:
 
       - name: Install dependencies
         if: env.version_changed == 'true'
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Publish package
         if: env.version_changed == 'true'
-        run: npm publish
+        run: yarn publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

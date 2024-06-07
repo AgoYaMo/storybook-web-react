@@ -1,0 +1,50 @@
+:root {
+  --ago-color: green;
+  --ago-font: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ago-button-font: var(--ago-font);
+  --ago-button-border-size: 0.15rem;
+  --ago-button-roder-radius: 0.2rem;
+  --ago-button-color: var(--ago-color);
+  --ago-button-border-inactive-color: gray;
+  --ago-button-border-active-color: var(--ago-color);
+}
+
+.button {
+  border: solid var(--ago-button-border-size) transparent;
+  border-radius: var(--ago-button-roder-radius);
+  font-family: var(--ago-button-font);
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--ago-button-color);
+  font-weight: bold;
+  transition: 0.1s;
+  &:hover {
+    border-color: var(--ago-button-border-active-color);
+  }
+
+  /* square === true */
+  &.square {
+    border-color: var(--ago-button-border-inactive-color);
+  }
+
+  /* active === true */
+  &.active {
+    border-color: var(--ago-button-border-active-color);
+  }
+
+  /* size === "small" */
+  &.small {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+  /* size === "medium" */
+  &.medium {
+    font-size: 14px;
+    padding: 11px 20px;
+  }
+  /* size === "large" */
+  &.large {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+}

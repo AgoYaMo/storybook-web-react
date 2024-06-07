@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import { peerDependencies } from "./package.json";
-import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,15 +18,8 @@ export default defineConfig({
     emptyOutDir: true,
   },
   plugins: [
-    cssInjectedByJsPlugin(),
     dts({
-      exclude: [
-        "./src/App.tsx",
-        "./src/main.tsx",
-        "./src/stories",
-        "./src/components/**/*.stories.ts",
-        "./src/components/**/*.stories.tsx",
-      ],
+      exclude: ["./**/*.stories.ts", "./**/*.stories.tsx"],
     }),
   ],
 });

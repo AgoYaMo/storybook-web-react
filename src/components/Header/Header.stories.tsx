@@ -32,6 +32,7 @@ export const Default: Story = {
         <Button active>Five</Button>
       </>
     ),
+    className: "",
     style: {},
   },
 };

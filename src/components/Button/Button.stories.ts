@@ -33,6 +33,8 @@ export const Default: Story = {
     active: false,
     size: "medium",
     children: "Button",
+    className: "",
+    style: {},
   },
 };
 
@@ -42,6 +44,8 @@ export const Square: Story = {
     active: false,
     size: "medium",
     children: "Button",
+    className: "",
+    style: {},
   },
 };
 
@@ -52,5 +56,7 @@ export const SquareActive: Story = {
     active: true,
     size: "medium",
     children: "Button",
+    className: "",
+    style: {},
   },
 };

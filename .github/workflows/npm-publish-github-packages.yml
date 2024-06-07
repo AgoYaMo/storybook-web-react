@@ -8,8 +8,7 @@ on:
     branches:
       - main
     paths:
-      - 'package.json'
-  
+      - "package.json"
 
 jobs:
   build:
@@ -44,11 +43,12 @@ jobs:
             exit 1
           fi
 
-      - name: Publish if version changed
+      - name: Install dependencies
         if: env.version_changed == 'true'
-        run: |
-          echo "Version has changed. Running your custom script..."
-          run: npm ci
-          run: npm publish
+        run: npm ci
+
+      - name: Publish package
+        if: env.version_changed == 'true'
+        run: npm publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

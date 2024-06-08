@@ -12,6 +12,8 @@
 .header {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
   padding: var(--ago-header-padding-y) var(--ago-header-padding-x);
   @media only screen and (min-width: 768px) {
     flex-direction: row;

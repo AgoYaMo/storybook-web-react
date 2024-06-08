@@ -17,7 +17,7 @@ export interface ButtonProps extends ComponentPropsWithRef<"button"> {
 }
 
 /**
- * Primary UI component for user interaction
+ * Button
  */
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (

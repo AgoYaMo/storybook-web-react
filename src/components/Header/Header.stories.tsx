@@ -20,8 +20,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     logo: {
-      imgSrc:
-        "https://pbs.twimg.com/profile_images/1311763847775125516/mvBRhlDs_400x400.jpg",
+      img: {
+        src: "https://pbs.twimg.com/profile_images/1311763847775125516/mvBRhlDs_400x400.jpg",
+      },
     },
     children: (
       <>

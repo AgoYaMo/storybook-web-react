@@ -7,6 +7,8 @@
   --ago-header-button-border-radius: 0.25rem;
   --ago-header-button-border-padding-y: 0.15rem;
   --ago-header-button-size: var(--ago-header-image-size);
+  --ago-header-nav-z-index: 25;
+  --ago-header-background-color: #333333;
 }
 
 .header {
@@ -14,6 +16,7 @@
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
+  background-color: var(--ago-header-background-color);
   padding: var(--ago-header-padding-y) var(--ago-header-padding-x);
   @media only screen and (min-width: 768px) {
     flex-direction: row;
@@ -54,33 +57,44 @@
   }
   @media only screen and (max-width: 767px) {
     &:has(input:not(checked)) {
-      + .linksMenu {
+      + .nav {
         height: 0;
       }
     }
     &:has(input:checked) {
-      + .linksMenu {
-        height: calc(
-          100vh - var(--ago-header-image-size) - var(--ago-header-padding-y) * 4
-        );
-        margin-top: var(--ago-header-padding-y);
-        margin-bottom: var(--ago-header-padding-y);
+      + .nav {
+        height: calc(100% - var(--ago-header-padding-y) * 2);
+        padding-bottom: var(--ago-header-padding-y);
         overflow: auto;
       }
     }
   }
 }
 
-.linksMenu {
+.nav {
   display: flex;
   flex-direction: column;
+  z-index: var(--ago-header-nav-z-index);
+  background-color: inherit;
   overflow: hidden;
   gap: var(--ago-header-links-gap);
-  transition: 0.5s;
+  box-sizing: border-box;
+  transition:
+    0.5s height,
+    0.5s margin-bottom;
   scrollbar-gutter: stable;
+  @media only screen and (max-width: 767px) {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: var(--ago-header-padding-y);
+  }
   @media only screen and (min-width: 768px) {
     height: auto;
     flex-direction: row;
+    scrollbar-gutter: none;
   }
 }
 

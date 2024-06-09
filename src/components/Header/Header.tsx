@@ -46,7 +46,7 @@ export const Header = forwardRef<HTMLHeadElement, HeaderProps>(
           </span>
         </label>
       )}
-      <nav className={styles.linksMenu}>{children}</nav>
+      <nav className={styles.nav}>{children}</nav>
     </header>
   )
 );
